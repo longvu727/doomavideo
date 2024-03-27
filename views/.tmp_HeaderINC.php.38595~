@@ -1,0 +1,237 @@
+<?php
+    if(!isset($VIEW_VARS['searchTerm'])) {$VIEW_VARS['searchTerm']='search movie...';} 
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        <title>Dooma-Video</title>
+        <script type="text/javascript" src="<?php print $VIEW_VARS['siteUrl'];?>/lib/js/jquery.1.5.1.min.js"></script>
+        <script type="text/javascript" src="<?php print $VIEW_VARS['siteUrl'];?>/lib/js/jqueryAutocomplete/jquery.autocomplete.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function()
+            {
+                $(".searchInput").autocomplete
+                (
+                    '<?php print $VIEW_VARS['siteUrl'];?>/index.php?ajaxRequest=searchSuggestion',
+                    {
+                        extraParams: { title: function(){ return $(".searchInput").val(); } },
+                        cacheLength: 0,
+                        autoFill: true
+                    }
+
+                );
+                $(".searchInput").click(function() { if(this.value=='<?php print $VIEW_VARS['searchTerm'] ?>'){this.value='';} });
+            });
+        </script>
+
+        <style type="text/css">
+            /*div{border: 1px solid;}*/
+            body
+            {
+                background-color:#EEE7D8;
+                margin: 0;
+                padding: 0;
+            }
+            .wrapper 
+            {
+                width: 980px;
+                margin: 0 auto;
+                background:url("/images/cherryblossom2.png") no-repeat scroll center 70px transparent;
+            }
+            
+            .header, .logo, .logo span, .search{height:85px;}
+            .header{background:url(/images/shadowBody.png) repeat-y;}
+            .logo, .navigator, .content{margin: 0 7px;}
+            .logo
+            {
+                width:360px;
+                float:left;
+            }
+            .logo a
+            {
+                background: url(/images/logo.gif) no-repeat;
+                color: #FFFFFF;
+                display: block;
+                overflow: hidden;
+                padding: 0;
+                position:relative;
+            }
+            .logo span
+            {
+                display: block;
+                margin-left: -9999px;
+            }
+            .search 
+            {
+                background: url("/images/searchbox.gif") no-repeat 0 2px transparent;
+                color: #FFFFFF;
+                display: block;
+                overflow: hidden;
+                padding: 0;
+                position:relative;
+                float:right;
+            }
+            .searchInput
+            {
+                background: none repeat scroll 0 0 transparent;
+                border: 0 none;
+                margin-left: 3px;
+                width: 300px;
+                height: 30px;
+                font-size: 16px;
+            }
+            .searchButton
+            {
+                background: none repeat scroll 0 0 transparent;
+                border: medium none;
+                cursor: pointer;
+                height: 30px;
+                margin: 2px 0 0 17px;
+                width: 50px;
+            }
+            .headerMainBreaker
+            {
+                background:url(/images/shadowMiddle.png);
+                height: 130px;
+            }
+            .main{clear: left;background:url(/images/shadowBody.png);}
+            .content{clear: left;}
+            
+            .navigator, .content{padding:4px;}
+            
+            .navigator{;}
+            .navigator ul li, .navigator ul li span{height: 45px;}
+            .navigator ul
+            {
+                margin: 0;
+                padding: 0;
+            }
+            .navigator ul li
+            {
+                float: left;
+                list-style: none outside none;
+            }
+            .navigator ul li span
+            {
+                display: block;
+                margin-left: -9999px;
+            }
+            .navigator ul li a
+            {
+                background: url(/images/tabs2.gif);
+                color: #FFFFFF;
+                display: block;
+                overflow: hidden;
+                padding: 0;
+                position:relative;
+            }
+            
+            .navigator ul li.homeTab{width:100px;}
+            .navigator ul li.homeTab a{;}
+            .navigator ul li.homeTab a:hover{background-position:0 -45px;}
+            
+            .navigator ul li.categoriesTab{width:152px;}
+            .navigator ul li.categoriesTab a{background-position:-100px 0;}
+            .navigator ul li.categoriesTab a:hover{background-position:-100px -45px;}
+            
+            .title{font-size: 24px;}
+            
+            .player, .movieList ul{margin-top: 50px;}
+            .player
+            {
+                height: 450px;
+                margin-top: 50px;
+                position: absolute;
+                width: 675px;
+            }
+            
+            .movieList ul
+            {
+                height: 450px;
+                list-style: none outside none;
+                overflow-y: auto;
+            }
+            
+            .movieList ul li
+            {
+                border: 1px solid;
+                margin-left: 680px;
+                position: relative;
+                text-align: center;
+                width: 200px;
+            }
+            
+            .searchResults{;}
+            .searchResults ul{list-style: none outside none;}
+            .searchResults ul li{;}
+            .searchResults ul li img{;}
+            .searchResults ul li a{;}
+            
+            .mainFooterBreaker
+            {
+                background:url(/images/shadowBottom.png);
+                height: 16px;
+            }
+            
+            .footer{clear: left;}
+            
+            /**************************************AUTOCOMPLETE***********************************/
+           
+            .ac_results 
+            {
+                padding: 0px;
+                border: 1px solid black;
+                background-color: white;
+                overflow: hidden;
+                z-index: 99999;
+            }
+            
+            .ac_results ul 
+            {
+                width: 100%;
+                list-style-position: outside;
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+            
+            .ac_results li 
+            {
+                margin: 0px;
+                padding: 2px 5px;
+                cursor: default;
+                display: block;
+                font: menu;
+                font-size: 12px;
+                line-height: 16px;
+                overflow: hidden;
+                white-space:nowrap;
+            }
+            
+            .ac_loading {background: white url('indicator.gif') right center no-repeat;}
+            .ac_odd {background-color: #EDD2C0;}
+            .ac_over {background-color: #0A246A;color: white;}
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="header">
+                <div class="logo"><a href="/"><span>Welcome to video</span></a></div>
+                <div class="search">
+                    <form action="/index.php?action=searchResult" method="post">
+                        <input type="text" class="searchInput" name="searchText" 
+                            value="<?php print $VIEW_VARS['searchTerm']; ?>"/>
+                        <input type="submit" class="searchButton" value=""/>
+                    </form>
+                </div>
+            </div>
+            <div class="headerMainBreaker"></div>
+            <div class="main">
+                <div class="navigator">
+                    <ul>
+                        <li class="homeTab"><a href="/"><span>&nbsp;</span></a></li>
+                        <li class="categoriesTab"><a href="/"><span>&nbsp;</span></a></li>
+                    </ul>
+                </div><br/>

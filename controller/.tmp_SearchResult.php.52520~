@@ -1,0 +1,13 @@
+<?php
+    class SearchResult
+    {
+        public function searchMovieByTitle($db, $inputTitle)
+        {
+            $documentRoot=$_SERVER['DOCUMENT_ROOT'];
+            include_once("$documentRoot/models/Video.php");
+            
+            $video = new Video($db);
+            return $video->findBySimilarTitleAscii($inputTitle);
+        }
+    }
+?>

@@ -1,0 +1,27 @@
+<?php
+    class Episode
+    {
+        public function getLinksByVideoId($db, $videoId)
+        {
+            $documentRoot=$_SERVER['DOCUMENT_ROOT'];
+            include_once("$documentRoot/models/VideoLinks.php");
+            
+            $videoLinks = new VideoLinks($db);
+            $videoArray= $videoLinks->findAllByVideoId($videoId);
+            
+            for($i=0;$i<count($videoArray);$i++)
+            {
+                $video=$videoArray[$i];
+                if(strstr($video['embeddedlink'], 'megavideo'))
+                {
+                    list($domain,$parameter)=explode('?',$video['embeddedlink']);
+                    $parameter=implode('/',explode('=',$parameter));
+                    $domain=trim($domain,'/');
+                    $videoArray[$i]['embeddedlink']="$domain/$parameter";
+                }
+            }
+            
+            return $videoArray;
+        }
+    }
+?>

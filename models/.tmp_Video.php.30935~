@@ -1,0 +1,53 @@
+<?php
+    include_once('Model.php');
+    class Video extends Model
+    {
+        public function __construct($db){ parent::__construct('video',$db);}
+        public function findByTitleAscii($title){ return $this->selectWhere('*',"title_ascii='$title'"); }
+        public function findSuggestionTitleAscii($title, $limit=10){ return $this->selectWhere('*',"title_ascii like '$title%' and active='1' limit $limit");}
+        
+        public function findAllByUpdateTime($time='', $limit=10, $order="desc") {
+            $orderLimit="order by update_time $order limit $limit";
+            return $this->selectWhere( '*', empty($time)? "1 $orderLimit":"update_time = '$time' $orderLimit" );
+        }
+        
+        public function findBySimilarTitleAscii($title, $videoPerPage, $pageNumber) { 
+            $start=($pageNumber-1)*$videoPerPage;
+            if(strlen($title)<4) {
+                $results['resultCount']= $this->selectWhere('count(1) as count',
+                                             "title_ascii LIKE '$title %' or 
+                                              title_ascii LIKE '% $title %'
+                                            ORDER BY 
+                                              title_ascii LIKE '% $title %',
+                                              title_ascii LIKE '$title %'
+                                            ");
+                $results['resultCount']=$results['resultCount'][0]['count'];
+                
+                $results['results']= $this->selectWhere('*',
+                                             "title_ascii LIKE '$title %' or 
+                                              title_ascii LIKE '% $title %'
+                                            ORDER BY 
+                                              title_ascii LIKE '% $title %',
+                                              title_ascii LIKE '$title %'
+                                            LIMIT $start, $videoPerPage");
+            }
+            else {
+                $results['resultCount']= $this->selectWhere("count(1) as count",
+                                          "MATCH (title_ascii)AGAINST ('$title') > 0.2"); 
+                $results['resultCount']=$results['resultCount'][0]['count'];
+                
+                $results['results']= $this->selectWhere("*, MATCH (title_ascii) AGAINST ('$title') AS relevance",
+                                          "1 HAVING relevance > 0.2 ORDER BY relevance DESC LIMIT $start, $videoPerPage");
+            }
+            
+            return $results;
+        }
+    }
+
+    /*
+    include_once('../doomaconfig/Connect.php');
+    $db= Connect::getDB();
+    $video = new Video($db);
+    print_r($video->selectAll());
+    */
+?>

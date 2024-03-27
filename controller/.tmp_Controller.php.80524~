@@ -1,0 +1,10 @@
+<?php
+    class Controller
+    {
+        protected $controllerDir;
+        public function __construct() {
+            $controllerDir  = $_SERVER['DOCUMENT_ROOT'] ;
+            $controllerDir .= ($_SERVER['HTTP_HOST'] == 'localhost' ) ? '/doomavideo/controller' : '/controller';
+        }
+    }
+?>

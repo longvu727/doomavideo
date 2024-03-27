@@ -1,0 +1,47 @@
+<?php include_once("HeaderINC.php");?>
+                <div class="content">
+                    <span class="title"><?php print $VIEW_VARS['searchResults'][0]['title_ascii'];?></span>
+                    <div class="player">
+                        <embed height="370" align="middle" width="100%" allowscriptaccess="sameDomain" menu="true" wmode="transparent" allowfullscreen="true" quality="high" bgcolor="#ffffff" id="fcdb45" src="http://megavideo.com/v/T0933T28" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">
+                    
+                        <embed align="middle" height="100%" width="100%" 
+                            allowscriptaccess="sameDomain" menu="true"
+                            wmode="transparent" allowfullscreen="true" 
+                            quality="high" bgcolor="#ffffff" 
+                            src="http://www.megavideo.com/?v=T0933T28" 
+                            type="application/x-shockwave-flash" 
+                            pluginspage="http://www.megavideo.com/?v=T0933T28">
+                            
+                    <!--  <embed align="middle" height="100%" width="100%" 
+                            allowscriptaccess="sameDomain" menu="true" 
+                            wmode="transparent" allowfullscreen="true" 
+                            quality="high" bgcolor="#ffffff" 
+                            src="http://www.megavideo.com/?v=7ID01X5C" 
+                            type="application/x-shockwave-flash" 
+                            pluginspage="http://www.megavideo.com/?v=7ID01X5C
+">
+-->
+                    </div>
+                    <div class='movieList'>
+                        <ul>
+                            <?php foreach($VIEW_VARS['searchResults'] as $video){ ?>
+                                <li>
+                                    <a href="#" onclick="switchTape('<?php print trim($video['embeddedlink']);?>');return false;">
+                                        <?php 
+                                            if($video['part']){ print "$video[episode] - $video[part]"; }
+                                            else {print "$video[episode]";}
+                                        ?>
+                                    </a>
+                                </li>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    function switchTape($embeddedLink) 
+                    { 
+                        $('.player embed').attr('src',$embeddedLink);
+                        $('.player embed').attr('pluginspage',$embeddedLink);
+                    }
+                </script>
+<?php include_once("FooterINC.php");?>

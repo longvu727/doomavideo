@@ -1,0 +1,10 @@
+.search 
+{
+    background: url("../images/searchbox.gif") no-repeat 0 10px transparent;
+    color: #FFFFFF;
+    display: block;
+    overflow: hidden;
+    padding: 0;
+    position:relative;
+    float:right;
+}

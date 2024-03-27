@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <style>
+            label {
+                float: left;
+                width: 200px;
+                text-indent: 15px;
+            }
+            input {
+                width: 500px;
+            }
+        </style>
+    </head>
+    <body>
+        <?php
+            //get all 
+            $html;
+            $cssSelectorHtml;
+            $iteratorCssSelectorHtml;
+            $nextCrawlerPage;
+            $nextUrlPage;
+            
+            $url='';
+            $cssSelector='';
+            $iteratorCssSelector='';
+            $iteratorRegex='';
+            
+            if( isset($_REQUEST['submit']) ) {
+                set_time_limit(0);
+                include('../lib/php/simple_html_dom.php');
+                include ('../doomaconfig/Config.php');
+                
+                $url = $_REQUEST['url'];
+                $cssSelector = $_REQUEST['cssSelector'];
+                $iteratorCssSelector = $_REQUEST['iteratorCssSelector'];
+                $iteratorRegex = $_REQUEST['iteratorRegex'];
+                //$iteratorLink   = $_REQUEST['iteratorLink'];
+                
+                $db= Config::getDB();
+                $html = file_get_html($url);
+                
+                if( !empty($cssSelector) ) {
+                    $findList = split(';', $cssSelector);
+                    foreach( $findList as $findElement ) {
+                        $cssSelectorHtml = $html->find( $findElement );
+                    }
+                }
+                
+                //searching for the next page, assumed that we don't have next page link
+                if( !empty($iteratorCssSelector) ) {
+                    $pageIteratorLinkList = $html->find( $iteratorCssSelector );
+                    
+                    /*if there is no iteratorLink, it must be the first page
+                     * if there is, search through the paginator links and find the position of iteratorLink then get the next link
+                     * */     
+                    
+                    if( !empty($iteratorRegex) && !empty($url) ) {
+                        preg_match("/$iteratorRegex/", $url, $matches);
+                        $iteratorNum = $matches[1];
+                        //next page
+                        $iteratorNum++;
+                        $nextUrlPage = stripslashes( $iteratorRegex );//preg_replace('\', $iteratorNum, $iteratorRegex);
+                        $nextUrlPage = preg_replace('/\(d\+\)/', $iteratorNum, $nextUrlPage);
+                        
+                        
+                    }/*
+                    else if( !empty($iteratorLink) ) {
+                        $found = 0;
+                        foreach( $pageIteratorLinkList as $pageIteratorLink ) {
+print $pageIteratorLink->getAttribute('href') . " == $iteratorLink<br/>";
+                            if( $found ) {
+                                $iteratorCssSelectorHtml = $pageIteratorLink;
+                                print $pageIteratorLink->getAttribute('href');
+                                $nextUrlPage = $iteratorCssSelectorHtml->getAttribute('href');
+                                break;
+                            }
+                            //set a flag to indicate that iteratorLink has been found
+                            if( $pageIteratorLink->getAttribute('href') == $iteratorLink ) {
+                                $found = 1;
+print "found";
+                            }
+                        }
+                    }*/
+                    else {
+                        $iteratorCssSelectorHtml = array_shift( $pageIteratorLinkList );
+                        $nextUrlPage = $iteratorCssSelectorHtml->getAttribute('href');
+                    }
+                    //make next page link including all parameters and next page link from the current page
+                    $nextPageParams = $_GET;
+                    //$nextPageParams['sources']='';
+                    
+                    $urlParsed = parse_url( $url );
+                    $nextPageParams['url']=$nextUrlPage;
+                    $nextPageParams['iteratorLink']=$nextUrlPage;
+                    $urlParameterStr = '';
+                    
+                    foreach( array_keys($nextPageParams) as $key ) {
+                        $urlParameterStr .= "$key=" . urlencode($nextPageParams[$key]) . "&";
+                    }
+                    $nextCrawlerPage = $_SERVER['SCRIPT_NAME'] . "?$urlParameterStr";
+                    
+                }
+                
+                //$html->clear();
+            }
+        ?>
+        
+        <a href="<?php if( isset($nextCrawlerPage) ) { print $nextCrawlerPage; } ?>">
+            next page >
+        </a><br>
+            
+        <form method="get" action="">
+            <label>Url:  </label>
+            <input type="text" name="url" value="<?php print $url; ?>"/><br>
+            
+            <label>Find css selector:  </label>
+            <input type="text" name="cssSelector" value="<?php print $cssSelector; ?>"/><br>
+            
+            <label>Iterator css selector:  </label>
+            <input type="text" name="iteratorCssSelector" value="<?php print $iteratorCssSelector; ?>"/><br>
+            
+            <label>Iterator regex:  </label>
+            <input type="text" name="iteratorRegex" value="<?php print $iteratorRegex; ?>"/><br>
+            
+            <label>Iterator link(next page):  </label>
+            <?php if( isset($nextUrlPage) ) { print $nextUrlPage; } ?><br>
+            
+            <label>Source:  </label>
+            <textarea cols="120" rows="20">
+                <?php 
+                    if( isset($cssSelectorHtml) ) { 
+                        if( is_array( $cssSelectorHtml ) ) {
+                            foreach( $cssSelectorHtml as $element ) {
+                                $element->dump();
+                            }
+                        }
+                        else {
+                            print_r( $cssSelectorHtml->dump() );
+                        }
+                    }
+                ?>
+            </textarea><br>
+            
+            <input type="submit" name="submit" value="Submit" />
+        </form>
+        
+        <?php 
+            if( isset($cssSelectorHtml) ) {
+                if( is_array( $cssSelectorHtml ) ) {
+                    foreach( $cssSelectorHtml as $element ) {
+                        print $element->innertext();
+                    }
+                }
+                else {
+                    print_r( $cssSelectorHtml->innertext() );
+                }
+            }
+        ?>
+    </body>
+</html>

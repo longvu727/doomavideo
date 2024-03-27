@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg9354"
+   sodipodi:version="0.32"
+   inkscape:version="0.45pre1"
+   sodipodi:docbase="C:\wamp\www\doomavideo\images"
+   sodipodi:docname="searchbox.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   inkscape:export-filename="C:\wamp\www\doomavideo\images\searchbox.gif"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90"
+   sodipodi:modified="TRUE">
+  <defs
+     id="defs9356" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     gridtolerance="10000"
+     guidetolerance="10"
+     objecttolerance="10"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="4.0428571"
+     inkscape:cx="358.78221"
+     inkscape:cy="26.315928"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     inkscape:window-width="1037"
+     inkscape:window-height="575"
+     inkscape:window-x="1"
+     inkscape:window-y="468" />
+  <metadata
+     id="metadata9359">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="opacity:1;fill:#e9c6af;fill-opacity:0.77922076;fill-rule:evenodd;stroke:none;stroke-width:0.99199998;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect9362"
+       width="305"
+       height="29.99988"
+       x="-0.03022865"
+       y="1022.3718"
+       rx="4.3571472"
+       ry="4.4999838"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       style="opacity:1;fill:#721c22;fill-opacity:1;fill-rule:evenodd;stroke:#e6e6e6;stroke-width:1.52308547;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect11337"
+       width="38.476913"
+       height="28.476913"
+       x="329.76422"
+       y="1023.1247"
+       rx="4.3613734"
+       ry="4.8645687"
+       inkscape:export-filename="C:\wamp\www\doomavideo\images\rect9362.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       sodipodi:type="arc"
+       style="opacity:1;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#e6e6e6;stroke-width:0.99199998;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path11339"
+       sodipodi:cx="40.048542"
+       sodipodi:cy="1006.7797"
+       sodipodi:rx="6.8446603"
+       sodipodi:ry="6.5533981"
+       d="M 46.893202 1006.7797 A 6.8446603 6.5533981 0 1 1  33.203882,1006.7797 A 6.8446603 6.5533981 0 1 1  46.893202 1006.7797 z"
+       transform="matrix(1.0983554,0,0,1.1375885,302.85494,-110.70196)"
+       inkscape:export-filename="C:\wamp\www\doomavideo\images\rect9362.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       style="opacity:1;fill:#e6e6e6;fill-opacity:0.77922076;fill-rule:evenodd;stroke:none;stroke-width:0.99199998;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect11341"
+       width="10.465164"
+       height="3.4171948"
+       x="979.29559"
+       y="473.72751"
+       transform="matrix(0.6990068,0.715115,-0.6990068,0.715115,0,0)"
+       inkscape:export-filename="C:\wamp\www\doomavideo\images\rect9362.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+  </g>
+</svg>

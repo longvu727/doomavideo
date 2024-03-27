@@ -1,0 +1,10 @@
+<?php
+    include_once('Model.php');
+    class Users extends Model
+    {
+        public function __construct($db){ parent::__construct('users',$db);}
+        public function findUser( $userName ) {
+            return $this->selectWhere('*',"username='$userName'"); 
+        }
+    }
+?>

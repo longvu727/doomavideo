@@ -1,0 +1,24 @@
+<?php include_once("HeaderINC.php");?>
+                <div class="content">
+                    <div class="searchResults">
+                        <ul>
+                            <?php
+                                if(!count($VIEW_VARS['searchTerm'])){print "<li>$VIEW_VARS[searchTerm] search term did not match any documents.</li>";}
+                                else
+                                {
+                                    foreach($VIEW_VARS['searchResults'] as $row)
+                                    {
+                                        print 
+                                            "<li>
+                                                <a href=\"/?action=episode&videoId=$row[videoid]\">
+                                                    <img src=\"$row[thumbnail]\"/>
+                                                    $row[title_ascii]
+                                                </a>
+                                            </li>";
+                                    }
+                                }
+                            ?>
+                        </ul>
+                    </div>
+                </div>
+<?php include_once("FooterINC.php");?>

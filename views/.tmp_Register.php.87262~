@@ -1,0 +1,13 @@
+<?php include_once("views/HeaderINC.php");?>
+        <div class="loginForm">  
+            <!--<a class="loginClose">x</a>  -->
+            <h1>Login</h1>
+            <form action="?action=login" method="post">  
+                <label class="logingLabels">Username</label><br/>
+                <input class="loginInputs" type="text" name="username"/><span><br/>
+                <label class="loginLabels">Password</label><br/>
+                <input class="loginInputs" type="password" name="password"/><br/>
+                <input type="submit" name="submit" value="Login"/>
+            </form>
+        </div>  
+<?php include_once("views/FooterINC.php");?>  

@@ -1,0 +1,34 @@
+<?php
+    include_once('Model.php');
+    class Video extends Model
+    {
+        public function __construct($db){ parent::__construct('video',$db);}
+        public function findByTitleAscii($title){ return $this->selectWhere('*',"title_ascii='$title'"); }
+        public function findSuggestionTitleAscii($title, $limit=10){ return $this->selectWhere('*',"title_ascii like '$title%' limit $limit");}
+        
+        public function findBySimilarTitleAscii($title)
+        { 
+            if(strlen($title)<4)
+            {
+                return $this->selectWhere('*',
+                                             "title_ascii LIKE '$title %' or 
+                                              title_ascii LIKE '% $title %'
+                                            ORDER BY 
+                                              title_ascii LIKE '% $title %',
+                                              title_ascii LIKE '$title %'");
+            }
+            else 
+            {
+                return $this->selectWhere("*, MATCH (title_ascii) AGAINST ('$title') AS relevance",
+                                          "1 HAVING relevance > 0.2 ORDER BY relevance DESC"); 
+            }
+        }
+    }
+
+    /*
+    include_once('../doomaconfig/Connect.php');
+    $db= Connect::getDB();
+    $video = new Video($db);
+    print_r($video->selectAll());
+    */
+?>

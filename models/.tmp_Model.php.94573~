@@ -1,0 +1,89 @@
+<?php
+    class Model
+    {
+        protected $tableName;
+        protected $db;
+        
+        public function __construct($tableName, $db) 
+        {
+            $this->tableName=$tableName;
+            $this->db=$db;
+        }
+        
+        public function selectAll()
+        {
+            $query="SELECT * FROM $this->tableName";
+            return $this->query($query,1);
+        }
+        
+        public function selectWhere($columns='*', $whereClause)
+        {
+            $query="SELECT $columns FROM $this->tableName WHERE $whereClause";
+            return $this->query($query,1);
+        }
+        
+        public function query($query, $processResult=0)
+        {
+            $result = $this->db->query($query);
+            if (!$result) {return 0;}
+            
+            if($processResult) {return $this->_processResults($result);}
+            else return 1;
+        }
+        
+        function _processResults($mysqliResult)
+        {
+            $resultArray=array();
+            while ($row = $mysqliResult->fetch_assoc()) {array_push($resultArray,$row);}
+            return $resultArray;
+        }
+        
+        function insert($columns, $values)
+        {
+            if(count($columns)!=count($values)){return 0;}
+            
+            $valueStr='';
+            $columnStr='';
+            
+            for($i=0;$i<count($columns);$i++) 
+            { 
+                $value=$this->db->escape_string($values[$i]);
+                $valueStr.="'$value',"; 
+            }
+            $valueStr=trim($valueStr,',');
+            $columnStr=implode(',',$columns);
+            
+            $query="insert into $this->tableName ($columnStr) values ($valueStr)";
+            print $query;
+            $this->query($query,0);
+            return mysqli_insert_id($this->db);
+        }
+        
+        function update($columns, $values, $where=1)
+        {
+            if(count($columns)!=count($values)){return 0;}
+            
+            $query="update $this->tableName set ";
+            for($i=0;$i<count($columns);$i++) 
+            { 
+                $value=$this->db->escape_string($values[$i]);
+                $query.="$columns[$i]='$value', "; 
+            }
+            //remove the last comma
+            $query=trim($query,", ");
+            
+            $query.=" where $where";     
+            return $this->query($query,0);
+        }
+    }
+    
+    
+    
+    
+    /*
+    include_once('../doomaconfig/Connect.php');
+    $db= Connect::getDB();
+    $model = new Model('video', $db);
+    print_r($model->selectAll());
+    */
+?>

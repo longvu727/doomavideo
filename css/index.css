@@ -1,0 +1,286 @@
+/*div{border: 1px solid;} #583E2C*/
+body
+{
+    background-color:#EEE7D8;
+    margin: 0;
+    padding: 0;
+}
+.wrapper 
+{
+    width: 980px;
+    margin: 0 auto;
+    background:url("../images/cherryblossom2.png") no-repeat scroll center 70px transparent;
+}
+
+.header, .logo, .logo span, .search{height:85px;}
+.header{background:url(../images/shadowBody.png) repeat-y;}
+.logo, .navigator, .content{margin: 0 7px;}
+.logo
+{
+    width:360px;
+    float:left;
+}
+.logo a
+{
+    background: url(../images/logo.gif) no-repeat;
+    color: #FFFFFF;
+    display: block;
+    overflow: hidden;
+    padding: 0;
+    position:relative;
+}
+.logo span
+{
+    display: block;
+    margin-left: -9999px;
+}
+.search 
+{
+    background: url("../images/searchbox.gif") no-repeat 0 2px transparent;
+    color: #FFFFFF;
+    display: block;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    float: left;
+}
+.searchInput
+{
+    background: none repeat scroll 0 0 transparent;
+    border: 0 none;
+    margin-left: 3px;
+    width: 300px;
+    height: 35px;
+    font-size: 16px;
+}
+.searchButton
+{
+    background: none repeat scroll 0 0 transparent;
+    border: medium none;
+    cursor: pointer;
+    height: 30px;
+    margin: 2px 0 0 17px;
+    width: 50px;
+}
+.account {
+    float: right;
+    color: #C9AC9F;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0 10px 0 0;
+}
+.account a {
+    color: #C9AC9F;
+    text-decoration: none;
+}
+.account a:hover {
+    color: #583E2C;
+    text-decoration: underline;
+}
+
+.headerMainBreaker
+{
+    background:url(../images/shadowMiddle.png);
+    height: 130px;
+}
+.main{clear: left;background:url(../images/shadowBody.png);}
+.content{clear: left; margin-top: 50px;}
+
+.navigator, .content{padding:4px;}
+
+.navigator{;}
+.navigator ul li, .navigator ul li span{height: 45px;}
+.navigator ul
+{
+    margin: 0;
+    padding: 0;
+}
+.navigator ul li
+{
+    float: left;
+    list-style: none outside none;
+}
+.navigator ul li span
+{
+    display: block;
+    margin-left: -9999px;
+}
+.navigator ul li a
+{
+    background: url(../images/tabs2.gif);
+    color: #FFFFFF;
+    display: block;
+    overflow: hidden;
+    padding: 0;
+    position:relative;
+}
+
+.navigator ul li.homeTab{width:100px;}
+.navigator ul li.homeTab a{;}
+.navigator ul li.homeTab a:hover{background-position:0 -45px;}
+
+.navigator ul li.categoriesTab{width:152px;}
+.navigator ul li.categoriesTab a{background-position:-100px 0;}
+.navigator ul li.categoriesTab a:hover{background-position:-100px -45px;}
+
+.episodeTitle, .episodeNumber{font-size: 1.7em;}
+
+/*{margin-top: 50px;}*/
+.player
+{
+    height: 450px;
+    float: left;
+    width: 675px;
+}
+
+.movieList {
+    float: right;
+    width: 270px;
+}
+
+.movieList .topBox, .movieList .bottomBox {
+    width: 260px;
+    height: 5px;
+}
+
+.movieList .midBox {
+    background: url("../images/box.gif") repeat scroll 15px 0 transparent;
+    padding: 1px 0 1px 0;
+}
+
+.movieList .topBox {
+    background: url("../images/topBox.gif") no-repeat scroll 15px 0 transparent;
+}
+
+.movieList .bottomBox {
+    background: url("../images/bottomBox.gif") no-repeat scroll 15px 0 transparent;
+}
+
+.movieList ul { 
+    list-style: none outside none;
+    height: 330px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 210px;
+}
+
+.movieList ul li{
+    border-bottom: 1px dotted #DEDEDE;
+    height: 25px;
+    text-align: center;
+    width: 190px;
+}
+
+.movieList ul li:hover{
+    display:block;
+    background-color: #DCDCDC;
+}
+
+.midBoxActive { background-color: #DCDCDC; }
+
+.movieList ul li a { 
+    margin: 0px; 
+    display: block; 
+    width: 100%; 
+    height: 100%;
+    color: #583E2C;
+    text-decoration: none; 
+}
+
+.searchResults{;}
+.searchResults .videoList
+{
+    display: block;
+    float: left;
+    font-size: 12px;
+    height: 200px;
+    line-height: 150%;
+    margin: 0 15px 15px 0;
+    padding: 15px 0 0 0;
+    text-align: center;
+    width: 175px;
+}
+
+.videoList {
+    top: 50%;
+}
+
+.videoList:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    background: #EDD2C0;
+}
+
+/*
+.searchResults ul{list-style: none outside none;}
+.searchResults ul li{padding: 5px;display: inline;}
+.searchResults ul li img{border:none;}
+.searchResults ul li a{text-decoration: none;padding: 0.2em 1em;}
+*/
+.searchResults .title {;}
+.paginator {clear: left; text-align:center;padding: 10px;}
+.paginator ul {list-style: none outside none;}
+.paginator ul li {display: inline;}
+.mainFooterBreaker
+{
+    background:url(../images/shadowBottom.png);
+    height: 16px;
+}
+
+.clearLeft { clear: left;}
+
+.footer
+{
+    clear: left;
+    text-align: center;
+}
+
+/**************************************LOGIN-REGISTER***********************************/
+.registerInputs, .loginInputs {
+    ;
+}
+.registerLabels, .loginLabels {
+    float: left;
+    text-align: right;
+    width: 130px;
+    padding-right: 25px;
+}
+.errorMessage {
+    color:red;
+    display:block;
+}
+/**************************************AUTOCOMPLETE***********************************/
+
+.ac_results 
+{
+    padding: 0px;
+    border: 1px solid black;
+    background-color: white;
+    overflow: hidden;
+    z-index: 99999;
+}
+
+.ac_results ul 
+{
+    width: 100%;
+    list-style-position: outside;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ac_results li 
+{
+    margin: 0px;
+    padding: 2px 5px;
+    cursor: default;
+    display: block;
+    font: menu;
+    font-size: 12px;
+    line-height: 16px;
+    overflow: hidden;
+    white-space:nowrap;
+}
+
+.ac_loading {background: white url('../indicator.gif') right center no-repeat;}
+.ac_odd {background-color: #EDD2C0;}
+.ac_over {background-color: #0A246A;color: white;}

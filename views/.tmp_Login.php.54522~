@@ -1,0 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+    <head>
+        <link type="text/css" href="<?php print $VIEW_VARS['siteUrl'];?>/css/loginPopup.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="loginForm">  
+            <a class="loginClose">x</a>  
+            <h1>Login</h1>
+            <form action="#" method="post">  
+                <label class="logingLabels">Username</label><br/>
+                <input class="loginInputs" type="text" name="username"/><span><br/>
+                <label class="loginLabels">Password</label><br/>
+                <input class="loginInputs" type="password" name="password"/><br/>
+            </form>
+        </div>  
+    </body>
+</html>  

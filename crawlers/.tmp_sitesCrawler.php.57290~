@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+    <body>
+        <?php
+            //get all 
+            set_time_limit(0);
+            include('../lib/php/simple_html_dom.php');
+            include ('../doomaconfig/Connect.php');
+            
+            function parseHtml($html,$simpleHtmlDomFindString,$callback=0,$pageCharCode='UTF-8',$convertCode='UTF-8')
+            {
+                $links=array();
+                foreach ($html->find($simpleHtmlDomFindString) as $entry)
+                {
+                    if($callback)   { $callback($entry,$links,$pageCharCode,$convertCode); }
+                    else            
+                    { 
+                        print "here";
+                        //parseLink($entry,$link,$pageCharCode,$convertCode);
+                    }
+                }
+                return $links;
+            }
+            function parseLink($entry,&$links,$pageCharCode,$convertCode)
+            {
+                $text='';
+                if(!$text=iconv($pageCharCode, $convertCode, $entry->innertext)){$text=$entry->innertext;}
+                $links[$text]=$entry->href;
+            }
+            function parseNatNatVipDescription($entry,&$links,$pageCharCode,$convertCode)
+            {
+                $text='';
+                if(!$text=iconv($pageCharCode, $convertCode, $entry->innertext)){$text=$entry->innertext;}
+                $links[$text]=$entry->href;
+            }
+            
+            $sites=array
+                    (
+                        'www.natnatvip-online.com/korean-dramas'=>'http://www.natnatvip-online.com/korean-dramas/'
+                    );
+            
+            $db= new Connect();
+            foreach($sites as $domain=>$url)
+            {
+                $html = file_get_html($url);
+                switch($domain)
+                {
+                    case 'www.natnatvip-online.com/korean-dramas':
+                        $allKoreanDramas=parseHtml($html, 'div[class=entry] p a','parseLink');
+                        $episodes=array();
+                        while(list($title,$link)=each($allKoreanDramas))
+                        {
+                            $episode=parseHtml(file_get_html($link),'div[class=entry] p a','parseLink');
+                            $episodes[$title]=$episode;
+                            
+                            $descLink=array_shift($episode);//image link links to description page
+                            print $descLink;
+                            $descriptions=parseHtml(file_get_html($descLink),'div[class=entry] p span','parseLink');
+                            
+                            array_shift($episode);//another description link
+                            
+                            print_r($descriptions);
+                            print_r($episodes);
+                            break;
+                        }
+                    break;
+                }
+            }
+            
+        ?>
+    </body>
+</html>

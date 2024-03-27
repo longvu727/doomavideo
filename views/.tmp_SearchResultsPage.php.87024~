@@ -1,0 +1,14 @@
+<?php include_once("HeaderINC.php");?>
+                <div class="content">
+                    <?php
+                        if(!count($VIEW_VARS['searchTerm'])){print "$VIEW_VARS[searchTerm] search term did not match any documents.";}
+                        else
+                        {
+                            foreach($VIEW_VARS['searchResults'] as $row)
+                            {
+                                print_r($row);
+                            }
+                        }
+                    ?>
+                </div>
+<?php include_once("FooterINC.php");?>

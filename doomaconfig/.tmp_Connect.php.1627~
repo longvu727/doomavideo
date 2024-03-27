@@ -1,0 +1,14 @@
+<?php
+    class Connect
+    {
+        public static function getDB()
+        {
+            $dbhost="localhost";
+            $dbname="doomavideo";
+            $dbusername="root";
+            $dbpassword="";
+            
+            return new mysqli($dbhost, $dbusername, $dbpassword, $dbname);
+        }
+    }
+?>

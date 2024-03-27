@@ -1,0 +1,318 @@
+/*div{border: 1px solid;}*/
+body
+{
+    background-color:#EEE7D8;
+    margin: 0;
+    padding: 0;
+}
+.wrapper 
+{
+    width: 980px;
+    margin: 0 auto;
+    background:url("../images/cherryblossom2.png") no-repeat scroll center 70px transparent;
+}
+
+.header, .logo, .logo span {height:85px;}
+.header{background:url(../images/shadowBody.png) repeat-y;}
+.logo, .navigator, .content{margin: 0 7px;}
+.logo
+{
+    width:360px;
+    float:left;
+}
+.logo a
+{
+    background: url(../images/logo.gif) no-repeat 15px 13px;
+    color: #FFFFFF;
+    display: block;
+    overflow: hidden;
+    padding: 0;
+    position:relative;
+}
+.logo span
+{
+    display: block;
+    margin-left: -9999px;
+}
+.search 
+{
+    background: url("../images/searchbox.gif") no-repeat 0 15px transparent;
+    color: #FFFFFF;
+    display: block;
+    overflow: hidden;
+    position: relative;
+    float: left;
+    height: 33px;
+    padding: 15px 0 0;
+}
+.searchInput
+{
+    background: none repeat scroll 0 0 transparent;
+    border: 0 none;
+    margin-left: 3px;
+    width: 300px;
+    height: 35px;
+    font-size: 16px;
+}
+.searchButton
+{
+    background: none repeat scroll 0 0 transparent;
+    border: medium none;
+    cursor: pointer;
+    height: 30px;
+    margin: 2px 0 0 17px;
+    width: 50px;
+}
+.account{
+    /*background: none repeat scroll 0 0 #EEEEEE;*/
+    float: right;
+    margin-right: 22px;
+    margin-top: 7px;
+    padding-top: 3px;
+    width: 160px;
+    color: #C9AC9F;
+    
+}
+.accountSignup { font-size: 26px; height: 30px; font-weight: bold;}
+.accountLogin { font-size: 18px; text-align: left; margin-left: 30px;}
+.accountNormalText {font-size: 12px;}
+
+.accountLoginMenu {
+    list-style: none;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin: -22px 0 0 -15px;
+}
+.accountLoginMenu li {
+    margin-right:10px;
+    list-style: none outside none;
+    display: block;
+    /*background:#DCDCDC;*/
+    height: 25px;
+    padding-left: 5px;
+}
+.loginLink {
+    background: transparent url('../images/loginBackground.png') no-repeat;
+    width: 55px;
+    height: 35px;
+}
+.loginLink:hover {
+    background: transparent url('../images/loginBackground.png') no-repeat;
+    width: 55px;
+    height: 35px;
+}
+.accountLoginMenu li ul li a {
+    width: 100%;
+    height: 100%
+}
+.accountLoginMenu li ul li a {
+    text-decoration: none;
+    color: #583E2C;
+}
+.accountLoginMenu li ul li a:hover {
+    text-decoration: none;
+}
+.accountLoginMenu li:hover ul {
+    display: block;
+}
+.accountLoginMenu li ul {
+    background: #DDDDDD url(../images/gradient.png) repeat-x 0 -110px;/*583E2C*/
+    display: none;
+    padding: 0 0 0 30px;
+    margin: 0px 0 0 -160px;
+    border-radius: 0.5em;
+    border: 1px solid #B4B4B4
+}
+
+.headerMainBreaker
+{
+    background:url(../images/shadowMiddle.png);
+    height: 130px;
+}
+.main{clear: left;background:url(../images/shadowBody.png);}
+.content{clear: left; margin-top: 50px;}
+
+.navigator, .content{padding:4px;}
+
+.navigator{;}
+.navigator ul li, .navigator ul li span{height: 45px;}
+.navigator ul
+{
+    margin: 0;
+    padding: 0;
+}
+.navigator ul li
+{
+    float: left;
+    list-style: none outside none;
+}
+.navigator ul li span
+{
+    display: block;
+    margin-left: -9999px;
+}
+.navigator ul li a
+{
+    background: url(../images/tabs2.gif);
+    color: #FFFFFF;
+    display: block;
+    overflow: hidden;
+    padding: 0;
+    position:relative;
+}
+
+.navigator ul li.homeTab{width:100px;}
+.navigator ul li.homeTab a{;}
+.navigator ul li.homeTab a:hover{background-position:0 -45px;}
+
+.navigator ul li.categoriesTab{width:152px;}
+.navigator ul li.categoriesTab a{background-position:-100px 0;}
+.navigator ul li.categoriesTab a:hover{background-position:-100px -45px;}
+
+.episodeTitle, .episodeNumber{font-size: 1.7em;}
+
+/*{margin-top: 50px;}*/
+.player
+{
+    height: 450px;
+    float: left;
+    width: 675px;
+}
+
+.movieList {
+    float: right;
+    width: 270px;
+}
+
+.movieList .topBox, .movieList .bottomBox {
+    width: 260px;
+    height: 5px;
+}
+
+.movieList .midBox {
+    background: url("../images/box.gif") repeat scroll 15px 0 transparent;
+    padding: 1px 0 1px 0;
+}
+
+.movieList .topBox {
+    background: url("../images/topBox.gif") no-repeat scroll 15px 0 transparent;
+}
+
+.movieList .bottomBox {
+    background: url("../images/bottomBox.gif") no-repeat scroll 15px 0 transparent;
+}
+
+.movieList ul { 
+    list-style: none outside none;
+    height: 330px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 210px;
+}
+
+.movieList ul li{
+    border-bottom: 1px dotted #DEDEDE;
+    height: 25px;
+    text-align: center;
+    width: 190px;
+}
+
+.movieList ul li:hover{
+    display:block;
+    background-color: #DCDCDC;
+}
+
+.midBoxActive { background-color: #DCDCDC; }
+
+.movieList ul li a { 
+    margin: 0px; 
+    display: block; 
+    width: 100%; 
+    height: 100%;
+    color: #583E2C;
+    text-decoration: none; 
+}
+
+.searchResults{;}
+.searchResults .videoList
+{
+    display: block;
+    float: left;
+    font-size: 12px;
+    height: 200px;
+    line-height: 150%;
+    margin: 0 15px 15px 0;
+    padding: 15px 0 0 0;
+    text-align: center;
+    width: 175px;
+}
+
+.videoList {
+    top: 50%;
+}
+
+.videoList:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    background: #EDD2C0;
+}
+
+/*
+.searchResults ul{list-style: none outside none;}
+.searchResults ul li{padding: 5px;display: inline;}
+.searchResults ul li img{border:none;}
+.searchResults ul li a{text-decoration: none;padding: 0.2em 1em;}
+*/
+.searchResults .title {;}
+.paginator {clear: left; text-align:center;padding: 10px;}
+.paginator ul {list-style: none outside none;}
+.paginator ul li {display: inline;}
+.mainFooterBreaker
+{
+    background:url(../images/shadowBottom.png);
+    height: 16px;
+}
+
+.clearLeft { clear: left;}
+
+.footer
+{
+    clear: left;
+    text-align: center;
+}
+
+/**************************************AUTOCOMPLETE***********************************/
+
+.ac_results 
+{
+    padding: 0px;
+    border: 1px solid black;
+    background-color: white;
+    overflow: hidden;
+    z-index: 99999;
+}
+
+.ac_results ul 
+{
+    width: 100%;
+    list-style-position: outside;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ac_results li 
+{
+    margin: 0px;
+    padding: 2px 5px;
+    cursor: default;
+    display: block;
+    font: menu;
+    font-size: 12px;
+    line-height: 16px;
+    overflow: hidden;
+    white-space:nowrap;
+}
+
+.ac_loading {background: white url('../indicator.gif') right center no-repeat;}
+.ac_odd {background-color: #EDD2C0;}
+.ac_over {background-color: #0A246A;color: white;}

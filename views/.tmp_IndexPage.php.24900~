@@ -1,0 +1,23 @@
+<?php include_once("HeaderINC.php");?>
+                <div class="content">
+                    New Releases<br/>
+                    Upcomming Releases
+                </div>
+<?php include_once("FooterINC.php");?>
+<?php
+    /*class IndexPage
+    {
+        function __construct(){;}
+        
+        function printPage(){ print $this->getPage();}
+        function getPage()
+        {
+            return <<<EOD
+            
+            your html here...
+            
+EOD;
+
+        }
+    }*/
+?>
